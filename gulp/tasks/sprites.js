@@ -18,16 +18,16 @@ var config = {
             variables: {
                 replaceSvgWithPng: function() {
                     return function(sprite, render) {
-                        /* Render gives us access to the CSS that lives in the template. 
-                         * Sprite is that dynamic filename that we have no way of predicting. 
-                         * Cut off .svg prefix and paste .png to the end of it. */ 
+                        /* Render gives us access to the CSS that lives in the template.
+                         * Sprite is that dynamic filename that we have no way of predicting.
+                         * Cut off .svg prefix and paste .png to the end of it. */
                         return render(sprite).split(".svg").join(".png");
                     }
                 }
             },
-            /**/
+
             sprite: 'sprite.svg',
-            
+
             /* Render out CSS. */
             render: {
                 /* Use CSS instead of something like SASS. */
@@ -53,12 +53,14 @@ gulp.task('createSprite', ['beginClean'], function() {
 });
 
 gulp.task('createPngCopy', ["createSprite"], function() {
+    /* Generate a png copy for browser compatibility fallback. */
     return gulp.src('./app/temp/sprite/css/*.svg')
             .pipe(svg2png())
             .pipe(gulp.dest('./app/temp/sprite/css'));
 });
 
 gulp.task('copySpriteGraphic', ['createPngCopy'], function() {
+    /* Copy the sprite from temp to assets directories. */
     return gulp.src('./app/temp/sprite/css/**/*{.svg,png}')
             .pipe(gulp.dest('./app/assets/images/sprites'));
 });
@@ -72,7 +74,7 @@ gulp.task('copySpriteCSS', ['createSprite'], function() {
 
 gulp.task('endClean', ['copySpriteGraphic', 'copySpriteCSS'], function() {
     /* Delete temp fold containing sprites which were moved to the assets folder. */
-    return del('./app/temp/sprite'); 
+    return del('./app/temp/sprite');
 });
 
 gulp.task('icons', ['beginClean', 'createSprite', 'createPngCopy', 'copySpriteGraphic', 'copySpriteCSS', 'endClean']);
