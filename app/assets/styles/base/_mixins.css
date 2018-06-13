@@ -1,0 +1,28 @@
+/* Reusable media queries. The underscore in the name is simple convention that means
+it's not to be used by itself but rather as part of a larger file. */
+
+@define-mixin atSmall {
+    @media(min-width: 530px) {
+        @mixin-content;
+    }
+}
+
+@define-mixin atMedium {
+    @media(min-width: 800px) {
+        @mixin-content;
+    }
+}
+
+@define-mixin atLarge {
+    @media(min-width: 1010px) {
+        @mixin-content;
+    }
+}
+
+@define-mixin clearfix {
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}

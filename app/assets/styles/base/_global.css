@@ -1,0 +1,21 @@
+/* Global styles. The underscore in the name is simple convention that means
+it's not to be used by itself but rather as part of a larger file. */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+* {
+    /* Overwrite how browsers compute size. */
+    box-sizing: border-box;
+}
+
+a {
+    color: $mainOrange;
+}
