@@ -1,8 +1,16 @@
 var gulp = require('gulp'),
-        watch = require("gulp-watch"),
-        browserSync = require("browser-sync").create();
+    watch = require("gulp-watch"),
+    browserSync = require("browser-sync").create();
 
-gulp.task("watch", ["icons"], function () {
+gulp.task("watch", ["updateSprites"], function () {
+    var imagesToWatch = [
+        "./app/assets/images/**/*.jpg",
+        "!./app/assets/images/icons",
+        "!./app/assets/images/icons/**",
+        "!./app/assets/images/sprites",
+        "!./app/assets/images/sprites/**"
+    ];
+
     // Refresh browser automatically when saving files.
     browserSync.init({
         // Hide sync notification.
@@ -29,6 +37,12 @@ gulp.task("watch", ["icons"], function () {
     watch("./app/assets/scripts/**/*.js", function() {
         // Any time a change is saved to a JS file trigger the Webpack scripts task and refresh the browser.
         gulp.start("scriptsRefresh");
+    });
+
+    // Trigger when files change within the Images directory.
+    watch(imagesToWatch, function() {
+        // Refresh the browser.
+        browserSync.reload();
     });
 
     // Trigger when files change within the Icons directory.
