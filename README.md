@@ -12,14 +12,15 @@ By leveraging build tools like **Gulp** and **Browsersync**, your computer will 
 2. Open the terminal console (e.g., git bash) and navigate to the root of this project.
 3. Ensure NPM is installed on your machine. Run `npm install` (this may take a while).
     - This installs all the tools listed within the `package.json` and `package-lock.json` files.
-4. When you're ready to work, run the `gulp watch` command (this may take a while).
+4. Ensure Gulp is installed globally. If it's not, enter `npm install gulp-cli --global`.
+5. When you're ready to work, run the `gulp watch` command (this may take a while).
     - Many files will be generated in your project.
     - A new browser window should open.
     - And the console will start acting as a server, watching for changes within the project.
-5. Minimize the console window allowing it to run in the background.
-6. Start developing your website. Save to see applied changes made in your browser.
-7. When you're done, enter in the console `Ctrl+C` to stop the gulp service.
-8. When you're ready to deploy your site, run the `gulp build` command in the console (this may take a while).
+6. Minimize the console window allowing it to run in the background.
+7. Start developing your website. Save to see applied changes made in your browser.
+8. When you're done, enter in the console `Ctrl+C` to stop the gulp service.
+9. When you're ready to deploy your site, run the `gulp build` command in the console (this may take a while).
     - This creates the `docs/` directory in the root of the project. Use this for the live version.
 
 ## USING ES6 & JAVASCRIPT
